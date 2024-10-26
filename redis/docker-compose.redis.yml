@@ -2,7 +2,7 @@ services:
   redis:
     build:
       context: .
-      dockerfile: ./docker/redis/Dockerfile
+      dockerfile: ./Dockerfile
       args:
         REDIS_PASSWORD: dotg-root
         REDIS_USER: dotg
