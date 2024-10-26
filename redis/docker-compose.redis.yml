@@ -1,0 +1,21 @@
+services:
+  redis:
+    build:
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
+      args:
+        REDIS_PASSWORD: dotg-root
+        REDIS_USER: dotg
+        REDIS_USER_PASSWORD: dotg
+    ports:
+      - '6379:6379'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    volumes:
+      - ./redis/data/:/root/redis

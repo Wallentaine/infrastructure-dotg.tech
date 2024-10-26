@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: 'dotg'
+      RABBITMQ_DEFAULT_PASS: 'dotg'
+      RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS: -rabbit consumer_timeout 72000000
+    volumes:
+      - /tmp/rabbitmq/data/:/var/lib/rabbitmq/
+      - /tmp/rabbitmq/log/:/var/log/rabbitmq
+    restart: on-failure
